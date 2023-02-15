@@ -24,10 +24,6 @@ int main()
     {
         cout << "MAX";
     }
-    else if( max = min)
-    {
-        cout << "EQUAL";
-    }
     else
     { 
         cout << "MIN";
