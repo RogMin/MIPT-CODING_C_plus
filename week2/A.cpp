@@ -7,7 +7,7 @@ using namespace std;
 
 void reverseArray(int (&a)[N])
 {
-    for (int i = F-1; i > -1 ; i--)
+    for (int i = N-1; i > -1 ; i--)
     {
        cout << a[i] << " ";
     }

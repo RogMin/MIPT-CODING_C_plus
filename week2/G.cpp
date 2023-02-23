@@ -11,11 +11,11 @@ void findUnique(int (&result)[N])
     int x = 1;
     for (int i = 0; i < N; i++)
     {
-        if(( x % result[i])  == 0)
+        if(( x % result[i])  == 0 && x != 0)
         {
             x /= result[i];
         }
-        else
+        else if(x != 0)
         {
             x *= result[i];
         }

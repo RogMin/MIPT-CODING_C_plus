@@ -1,40 +1,62 @@
 #include <iostream>
-
-using namespace std;
 #ifndef N
-#define N 5 // actual size of the array
+#define N 10 // actual size of the array
 #endif
 
-int findLastZero(int (&arr)[N])
+int findLastZero(int (&a)[N])
 {
-    int l = 0, r = N, mid;
-    while (l < r) 
+    int start_point = 0, end_point = N - 1;
+    int point;
+    while (end_point - start_point > 2)
     {
-        mid = (l + r) / 2; 
-        if (arr[mid] == 1)
+        point = (end_point - start_point) / 2 + start_point;
+        if (a[start_point] == 0 and a[point] == 1)
         {
-            r = mid;
-        } 
-        else if ( arr[mid] == 0 && arr[mid+1] == 1)
-        {
-            return mid;
+            end_point = point;
         }
-        else l = mid + 1;
+        else
+        {
+            start_point = point;
+        }
     }
-    r--;
-    return 0;
+    if (end_point - start_point == 2)
+    {
+        if (a[start_point + 1] == 0)
+        {
+            return start_point + 1;
+        }
+        else
+        {
+            return start_point;
+        }
+    }
+    else
+    {
+        return start_point;
+    }
 }
-void writeArray(int (&a)[N])
+
+void readArray(int (&a)[N])
 {
     for (int i = 0; i < N; i++)
     {
-        cin >> a[i];
+        std::cin >> a[i];
     }
-} 
+}
+
+void printArray(int (&a)[N])
+{
+    for (int i = 0; i < N; i++)
+    {
+        std::cout << a[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
 int main()
-{   
+{
     int a[N];
-    writeArray(a);
-    findLastZero(a);
-    cout << endl;
+    readArray(a);
+    int answer = findLastZero(a);
+    std::cout << answer << std::endl;
 }
