@@ -23,7 +23,7 @@ void shiftRight(int (&a)[N])
 }
 int main()
 {
-    int arr[F];  
+    int arr[N];  
     for (int i = 0; i < N; i++)
     {
         cin >> arr[i];

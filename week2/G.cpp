@@ -1,38 +1,39 @@
 #include <iostream>
-
-using namespace std;
 #ifndef N
-#define N 7 // actual size of the array
+#define N 5 // actual size of the array
 #endif
 
-
-void findUnique(int (&result)[N])
+int findUnique(int (&a)[N])
 {
-    int x = 1;
-    for (int i = 0; i < N; i++)
+    int b = a[0];
+    for (int i = 1; i < N; i++)
     {
-        if(( x % result[i])  == 0 && x != 0)
-        {
-            x /= result[i];
-        }
-        else if(x != 0)
-        {
-            x *= result[i];
-        }
+        b ^= a[i];
     }
-    cout << x;
+    return b;
 }
-void writeArray(int (&a)[N])
+
+void readArray(int (&a)[N])
 {
     for (int i = 0; i < N; i++)
     {
-        cin >> a[i];
+        std::cin >> a[i];
     }
-} 
+}
+
+void printArray(int (&a)[N])
+{
+    for (int i = 0; i < N; i++)
+    {
+        std::cout << a[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
 int main()
-{   
+{
     int a[N];
-    writeArray(a);
-    findUnique(a);
-    cout << endl;
+    readArray(a);
+    int b = findUnique(a);
+    std::cout << b << std::endl;
 }
