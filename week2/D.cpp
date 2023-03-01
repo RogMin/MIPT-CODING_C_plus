@@ -1,54 +1,44 @@
 #include <iostream>
 
-using namespace std;
 #ifndef N
-#define N 5 // actual size of the array
+#define N 5
 #endif
 
-
-void printArray(int (&arr)[N])
-{
-   for (int i = 0; i < N; i++)
-    {
-      cout << arr[i] << " ";
+void readArray(int (&a)[N]){
+    for (int i = 0; i < N; i++){
+        std::cin >> a[i];
     }
-     cout << endl;  
 }
-void moveNegativeToEnd(int (&arr)[N])
-{
-    int result[N];
-    int j=-1;
-    for(int i : arr)
-    {  
-     
-     if(i < 0)
-     {
-        j++;
-        result[j] = i;
-     }
+void showArray(int (&a)[N]){
+    for (int i = 0; i < N; i++){
+        std::cout << a[i] << " ";
     }
-    for(int i : arr)
-    {
-
-     if(i >= 0)
-     {
-         j++;
-        result[j] = i;
-     }
-    }
-    printArray(result);
 }
-void writeArray(int (&a)[N])
-{
-    for (int i = 0; i < N; i++)
-    {
-        cin >> a[i];
+
+void moveNegativeToEnd(int (&a)[N]){
+    int b[N] = {0};
+    int j = 0;
+    for(int i = 0; i < N; i++){      
+        if(a[i] >= 0){
+            b[j] = a[i];
+            j += 1;        
+            }
+        }
+    for(int i = 0; i < N; i++){      
+        if(a[i] < 0){
+            b[j] = a[i];
+            j += 1;        
+            }
+        }
+    
+    for(int i = 0; i < N; i++){
+        a[i] = b[i];
     }
-} 
-int main()
-{   
+}
+
+int main(){
     int a[N];
-    writeArray(a);
+    readArray(a);
     moveNegativeToEnd(a);
-    cout << endl;
+    showArray(a);
 }
