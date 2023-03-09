@@ -1,44 +1,32 @@
 #include <iostream>
+using namespace std;
 
-#ifndef N
-#define N 5
-#endif
-
-void readArray(int (&a)[N]){
-    for (int i = 0; i < N; i++){
-        std::cin >> a[i];
-    }
-}
-void showArray(int (&a)[N]){
-    for (int i = 0; i < N; i++){
-        std::cout << a[i] << " ";
-    }
-}
-
-void moveNegativeToEnd(int (&a)[N]){
-    int b[N] = {0};
-    int j = 0;
-    for(int i = 0; i < N; i++){      
-        if(a[i] >= 0){
-            b[j] = a[i];
-            j += 1;        
-            }
+int main()
+{
+    int N, b, a, min=0, max=0;
+    cin >> N;
+    cin >> a;
+    while(N - 1> 0)
+    {
+        cin >> b;
+        if (b>a)
+        {
+            max++;
         }
-    for(int i = 0; i < N; i++){      
-        if(a[i] < 0){
-            b[j] = a[i];
-            j += 1;        
-            }
+        else
+        {
+            min++;
         }
-    
-    for(int i = 0; i < N; i++){
-        a[i] = b[i];
+        a=b;
+        N--;
     }
-}
-
-int main(){
-    int a[N];
-    readArray(a);
-    moveNegativeToEnd(a);
-    showArray(a);
+    if (max > min)
+    {
+        cout << "MAX";
+    }
+    else
+    { 
+        cout << "MIN";
+    }
+    return 0;
 }

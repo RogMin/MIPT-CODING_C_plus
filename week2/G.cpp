@@ -1,39 +1,36 @@
 #include <iostream>
-#ifndef N
-#define N 5 // actual size of the array
-#endif
+using namespace std;
 
-int findUnique(int (&a)[N])
-{
-    int b = a[0];
-    for (int i = 1; i < N; i++)
+int main(){
+    int N, b, a, c, min=0, max=0;
+    cin >> N;
+    cin >> a >> b;
+    while(N-2 >0)
     {
-        b ^= a[i];
+        cin >> c;
+        if (b>=a && b >=c )
+        {
+            max++;
+        }
+        else if (b<=a && b<=c)
+        {
+            min++;
+        }
+        a = b;
+        b = c;
+        N--;
     }
-    return b;
-}
-
-void readArray(int (&a)[N])
-{
-    for (int i = 0; i < N; i++)
+    if (max > min)
     {
-        std::cin >> a[i];
+        cout << "MAX";
     }
-}
-
-void printArray(int (&a)[N])
-{
-    for (int i = 0; i < N; i++)
+    else if (min > max)
     {
-        std::cout << a[i] << " ";
+        cout << "MIN";
     }
-    std::cout << std::endl;
-}
-
-int main()
-{
-    int a[N];
-    readArray(a);
-    int b = findUnique(a);
-    std::cout << b << std::endl;
+    else
+    {
+        cout << "EQUAL";
+    }
+    return 0;
 }

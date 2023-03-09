@@ -1,43 +1,26 @@
 #include <iostream>
-#ifndef N
-#define N 10 // actual size of the array
-#endif
+using namespace std;
 
-
-void reverseArray(int (&a)[N])
+int revers(int N)
 {
-    int b[N];
-    for(int i = 0; i < N; i++)
+    int M=0;
+    while(N != 0)
     {
-        b[i] = a[N - 1 - i];
+        M = M*10 + (N%10);
+        N = N/10;
     }
-    for(int i = 0; i < N; i++)
-    {
-        a[i] = b[i];
-    }
-}
-
-void readArray(int (&a)[N])
-{
-    for(int i = 0; i < N; i++)
-    {
-        std::cin >> a[i];
-    }
-}
-
-void printArray(int (&a)[N])
-{
-    for(int i = 0; i < N; i++)
-    {
-        std::cout << a[i] << " ";
-    }
-    std::cout << std::endl;
+    return M;
 }
 
 int main()
 {
-    int a[N];
-    readArray(a);
-    reverseArray(a);
-    printArray(a);
+    int N;
+    cin >> N;
+    if (N==revers(N)){
+        cout << "YES";
+    }
+    else{
+        cout << "NO";
+    }
+    return 0;
 }

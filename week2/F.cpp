@@ -1,62 +1,26 @@
 #include <iostream>
-#ifndef N
-#define N 10 // actual size of the array
-#endif
+using namespace std;
 
-int findLastZero(int (&a)[N])
+unsigned fibonacci(unsigned i)
 {
-    int start_point = 0, end_point = N - 1;
-    int point;
-    while (end_point - start_point > 2)
+    unsigned f0=0, f1=1;
+    if (i == 0)
     {
-        point = (end_point - start_point) / 2 + start_point;
-        if (a[start_point] == 0 and a[point] == 1)
-        {
-            end_point = point;
-        }
-        else
-        {
-            start_point = point;
-        }
+        return f0;
     }
-    if (end_point - start_point == 2)
+    else if (i == 1)
     {
-        if (a[start_point + 1] == 0)
-        {
-            return start_point + 1;
-        }
-        else
-        {
-            return start_point;
-        }
+        return f1;
     }
     else
     {
-        return start_point;
+        return fibonacci(i-1) + fibonacci(i-2);
     }
 }
 
-void readArray(int (&a)[N])
-{
-    for (int i = 0; i < N; i++)
-    {
-        std::cin >> a[i];
-    }
-}
-
-void printArray(int (&a)[N])
-{
-    for (int i = 0; i < N; i++)
-    {
-        std::cout << a[i] << " ";
-    }
-    std::cout << std::endl;
-}
-
-int main()
-{
-    int a[N];
-    readArray(a);
-    int answer = findLastZero(a);
-    std::cout << answer << std::endl;
+int main(){
+    int i;
+    cin >> i;
+    cout << fibonacci(i);
+    return 0;
 }
